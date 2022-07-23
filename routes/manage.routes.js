@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET users listing. */
+/* GET Manage page. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('index1', { title: 'Manage' });
 });
 
 module.exports = router;

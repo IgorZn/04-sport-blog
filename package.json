@@ -7,20 +7,20 @@
     "nodemon": "nodemon ./bin/www"
   },
   "dependencies": {
+    "body-parser": "*",
+    "connect-flash": "*",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-list-routes": "^1.1.3",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
     "http-errors": "~1.6.3",
+    "moment": "*",
+    "mongoose": "*",
     "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11",
-
     "nodemon": "*",
-    "body-parser":"*",
-    "mongoose":"*",
-    "connect-flash":"*",
-    "express-messages":"*",
-    "express-session":"*",
-    "express-validator":"*",
-    "moment":"*"
+    "pug": "2.0.0-beta11"
   }
 }
