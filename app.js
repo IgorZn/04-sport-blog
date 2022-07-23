@@ -4,10 +4,44 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const expressValidator = require('express-validator');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
+
+// Body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Express messages
+app.use(require('connect-flash')());
+app.use((req, res, next) => {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+
+// Express validator
+// app.use(expressValidator({
+//   errorFormatter: (param, msg, value) => {
+//       let namespace = param.split('.')
+//       , root    = namespace.shift()
+//       , formParam = root;
+//
+//     while(namespace.length) {
+//       formParam += '[' + namespace.shift() + ']';
+//     }
+//     return {
+//       param : formParam,
+//       msg   : msg,
+//       value : value
+//     };
+//   }
+// }));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
