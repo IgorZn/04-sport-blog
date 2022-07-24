@@ -1,9 +1,9 @@
 const express = require('express');
+const {getCategories} = require("../controllers/categories.ctrl");
 const router = express.Router();
 
 /* GET Categories page. */
-router.get('/', function(req, res, next) {
-  res.render('add_categories', { title: 'Add Categories' });
-});
+router.route('/')
+    .get(getCategories)
 
 module.exports = router;
