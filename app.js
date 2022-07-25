@@ -1,3 +1,6 @@
+// Load env vars (FIRST!)
+require('dotenv').config();
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -17,7 +20,13 @@ const manageRouter = require('./routes/manage.routes');
 const indexRouter = require('./routes/index.routes');
 const usersRouter = require('./routes/users');
 
+// DB connector
+const connectDB = require("./conf/db");
+
 const app = express();
+
+// Connect to DB
+connectDB();
 
 // Body parser
 app.use(bodyParser.json());
