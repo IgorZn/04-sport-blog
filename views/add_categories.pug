@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to -  #{title}
+  .container
+    h1= title
+    p Welcome to -  #{title}
+    p
+    form(method='post', action='/categories/add')
+      .form-group
+        label Title:
+        input.form-control(name='title', type='text')
+      .form-group
+        label Description:
+        textarea.form-control(name='description')
+      input.btn.btn-primary(type='submit', name='submit', value='Save')
+      a.btn.btn-danger(href='/manage/categories') Back

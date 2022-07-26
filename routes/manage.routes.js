@@ -4,8 +4,8 @@ const {
     addArticle,
     getArticleCategories,
     editArticle,
-    editCategories
-
+    editCategories,
+    addManageCategory, getManageCategory
 
 
 } = require("../controllers/manage.ctrl");
@@ -17,6 +17,10 @@ router.route('/articles')
 
 router.route('/categories')
     .get(getArticleCategories)
+
+router.route('/categories/add')
+    .get(getManageCategory)
+
 
 router.route('/articles/add')
     .get(addArticle)

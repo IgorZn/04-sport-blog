@@ -1,8 +1,13 @@
 Categories = require('../models/category')
 
 
-exports.addCategories = (req, res, next) => {
-  res.render('add_categories', {title: 'Add Categories'});
+exports.addCategory = async (req, res, next) => {
+  const { title,  description } = req.body
+  console.log(title, description)
+  await Categories.create(req.body, async (err) => {
+      if (err) return console.log(err)
+      res.redirect('/categories')
+  })
 };
 
 exports.getCategories = (req, res, next) => {
