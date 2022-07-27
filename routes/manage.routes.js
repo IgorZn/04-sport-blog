@@ -4,8 +4,10 @@ const {
     addArticle,
     getArticleCategories,
     editArticle,
-    editCategories,
-    addManageCategory, getManageCategory
+    getManageCategory,
+    getByIDCategories,
+    editByIDCategories,
+    deleteByIDCategories
 
 
 } = require("../controllers/manage.ctrl");
@@ -29,6 +31,10 @@ router.route('/articles/edit/:id')
     .get(editArticle)
 
 router.route('/categories/edit/:id')
-    .get(editCategories)
+    .get(getByIDCategories)
+    .post(editByIDCategories)
+
+router.route('/categories/delete/:id')
+    .delete(deleteByIDCategories)
 
 module.exports = router;

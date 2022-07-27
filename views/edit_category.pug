@@ -1,4 +1,19 @@
 extends layout
 
 block content
-  h1 #{title}
+  h1= title
+  p Welcome to -  #{title}
+  p
+  form(method='post', action='/manage/categories/edit/' + category._id)
+    div.input-group.mb-3
+      label.form-label Title:
+    div.input-group.mb-3
+      input.form-control(name='title', type='text', value=category.title)
+    div.input-group.mb-3
+      label.form-label Description:
+    div.input-group.mb-3
+      textarea.form-control(name='description' ) #{category.description}
+    div.input-group.md-3
+      input.btn.btn-primary.save-btn(type='submit', name='submit', value='Save')
+      a.btn.btn-outline-secondary(href='/manage/categories') Back
+      a.btn.btn-danger.category-delete.float-end(href='/manage/categories', data-cat-id=category._id) Delete

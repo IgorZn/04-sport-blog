@@ -2,6 +2,10 @@ extends layout
 
 block content
   .container
+    .row
+      .col-md-12
+        a(class="btn btn-info float-end", href="/manage/categories/add") Add Category
+
     h1 #{title}
     table(class='table table-striped')
       tr

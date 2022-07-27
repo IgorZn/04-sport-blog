@@ -1,3 +1,4 @@
+const checkBody = require("../support/misc");
 Categories = require('../models/category')
 
 exports.getManageArticles = (req, res, next) => {
@@ -16,8 +17,30 @@ exports.editArticle = (req, res, next) => {
   res.render('edit_article', {title: `Edit Article ID - ${req.params.id}`});
 }
 
-exports.editCategories = (req, res, next) => {
-  res.render('edit_category', {title: `Edit Category ID - ${req.params.id}`});
+exports.getByIDCategories = async (req, res, next) => {
+    const id = req.params.id;
+    const category = await Categories.findById(id)
+    res.render('edit_category', {
+        title: `Edit Category ID - ${req.params.id}`,
+        category: category
+    });
+}
+
+exports.editByIDCategories = (req, res, next) => {
+    const id = req.params.id
+    if (checkBody(req.body)) {
+        Categories.findByIdAndUpdate(id, req.body);
+        res.redirect(204, '/manage/categories');
+    }
+}
+
+exports.deleteByIDCategories = async (req, res, next) => {
+    console.log('deleteByIDCategories', req.params.id)
+    const id = req.params.id
+    if (id) {
+        await Categories.findByIdAndRemove(id);
+        await res.status(200);
+    }
 }
 
 exports.getArticleCategories = (req, res, next) => {
